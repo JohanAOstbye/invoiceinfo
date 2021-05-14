@@ -1,0 +1,21 @@
+service: interest-mailer
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: prod
+  region: eu-west-1
+
+functions:
+  interest-mailer:
+    handler: dist/lambda/src/handler.handler
+    package:
+      excludeDevDependencies: true
+    events:
+      - http:
+          path: sendMail
+          method: POST
+          cors: true
+
+plugins:
+  - serverless-plugin-optimize
