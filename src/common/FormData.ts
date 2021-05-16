@@ -8,9 +8,9 @@ export interface FormData {
   delivery: string;
   deliveryAdress: string;
   comments: string;
-  isDuedate: boolean;
+  isduedate: boolean;
   duedate: string;
-  isPonumber: boolean;
+  isponumber: boolean;
   ponumber: string;
 
 }

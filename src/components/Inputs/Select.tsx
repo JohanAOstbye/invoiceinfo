@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import { Select as DsSelect } from '@dotkomonline/design-system';
+import { useField } from 'formik';
+import React, { Dispatch, SetStateAction, useState } from 'react';
+// import { Select as DsSelect } from '@dotkomonline/design-system';
 // import styled from 'styled-components';
 import ReactSelect from 'react-select';
 import styled, { StyledComponentProps } from 'styled-components';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface SelectPropsTest extends StyledComponentProps<'select', any, any, any> {
   options: OptionType[];
 }
@@ -49,20 +51,26 @@ interface SelectProps {
 }
 
 const SelectBase = ({ ...props }: SelectProps) => {
-  const [selectedOption, setSelectedOption] = useState(props.options[0]);
+  const [field, meta, helpers] = useField({ type: 'select', ...props });
+  const { setValue } = helpers;
+  const [selectedOption, setSelectedOption]: [OptionType | undefined, Dispatch<SetStateAction<OptionType | undefined>>] = useState();
 
   const handleChange = (option: OptionType) => {
     setSelectedOption(option);
+    setValue(option.value)
   };
 
   return (
     <S.Wrapper>
       <SelectTest
+        {...field}
         name={props.name}
         options={props.options}
         value={selectedOption}
         onChange={(option: OptionType) => handleChange(option)}
+        
       />
+      {meta.error && meta.touched && <div>{meta.error}</div>}
     </S.Wrapper>
   );
 };

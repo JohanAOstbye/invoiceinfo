@@ -22,7 +22,7 @@ const Form = styled.form`
   margin: 2rem 0;
 `;
 
-const InterestForm = () => {
+const InterestForm = ():JSX.Element => {
   const [submitted, setSubmitted] = useState(false);
   const [hasError, setHasError] = useState(false);
 
@@ -36,9 +36,9 @@ const InterestForm = () => {
     delivery: '',
     deliveryAdress: '',
     comments: '',
-    isDuedate: false,
+    isduedate: false,
     duedate: '',
-    isPonumber: false,
+    isponumber: false,
     ponumber: '',
   };
   return (
@@ -55,6 +55,7 @@ const InterestForm = () => {
           });
           if (res.status === 200) setSubmitted(true);
         } catch (err) {
+          // eslint-disable-next-line no-console
           console.log(err);
           setHasError(true);
         }

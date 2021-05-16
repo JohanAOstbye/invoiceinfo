@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { colors, md } from '@dotkomonline/design-system';
 import Area from '../../../Area';
-import { introText, productDetails } from './informationText';
+import { introText } from './informationText';
 
 
 const S = {
@@ -23,7 +23,7 @@ const S = {
 };
 
 
-const InformationArea = () => (
+const InformationArea = ():JSX.Element => (
     <Area>
       <S.Wrapper>
         {md`${introText}`}

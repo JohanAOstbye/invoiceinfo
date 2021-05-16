@@ -19,8 +19,8 @@ const ExtraInfo: FC<ExtraInfoProps> = ({ name, label }) => {
   const boolname = `is${name}`
   return (
     <div>
-      <Checkbox label={label} name={boolname} value={boolname} />
-      {values[boolname] ? <TextField name={name} label={label} placeholder={name} /> : null}
+      <Checkbox label={`Ønsker ${label}`} name={boolname} value={boolname} />
+      {values[boolname] ? <TextField name={name} placeholder={label} /> : null}
     </div>
   )
 };

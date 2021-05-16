@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Paragraph } from '@dotkomonline/design-system';
 import Area from '../../Area';
 import Select, { OptionType } from '../../Inputs/Select';
 
@@ -48,11 +47,10 @@ const S = {
 };
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const OccationArea = () => (
-  <Area title="Hva er dere interessert i?">
-    <Paragraph>Kryss av for den anledningen fakturaen skal sendes for</Paragraph>
+  <Area title="Velg anledningen fakturaen skal sendes for">
     <S.Div>
       <Select
-        name="Occation"
+        name="occation"
         options={occations}
         label="Anledning"
        />

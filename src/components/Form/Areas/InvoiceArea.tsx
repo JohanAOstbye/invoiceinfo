@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { FormikProps, FormikValues, useFormikContext } from 'formik';
 import styled from 'styled-components';
 import TextField from '../../Inputs/TextField';
@@ -35,10 +35,6 @@ const S = {
 // eslint-disable-next-line @typescript-eslint/ban-types
 const InvoiceArea: FC<{}> = () => {
   const { values }: FormikProps<FormikValues> = useFormikContext();
-
-  useEffect(() => {
-    console.log("refresh")
-  }, [values])
   return (
     <Area title="Fakturainformasjon">
       <TextField name="orgnr" label="Organisasjonsnummer" placeholder="Bedrift AS" />
@@ -47,12 +43,12 @@ const InvoiceArea: FC<{}> = () => {
       options={delivery}
       label="delivery"
       />
-      {values.delivery !== "ehf" ? (
-        <TextField name="deliveryLocation" label="deliveryLocation" placeholder={`Ønsket ${values.delivery}`} />
+      {(values.delivery !== "ehf" && values.delivery !== "") ? (
+        <TextField name="deliveryLocation" label={values.delivery} placeholder={`Ønsket ${values.delivery}`} />
       ): null}
       <S.Div>
       <ExtraInfo name="ponumber" label="PO nummer"/>
-      <ExtraInfo name="duedate" label="Spesiell forfallsdato"/>
+      <ExtraInfo name="duedate" label="spesiell forfallsdato"/>
       </S.Div>
     </Area>
   )};
