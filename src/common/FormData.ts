@@ -12,7 +12,6 @@ export interface FormData {
   duedate: string;
   isponumber: boolean;
   ponumber: string;
-
 }
 
 export type Occation = 'bedpres' | 'kurs' | 'offline' | 'online_ad' | 'techtalks' | 'excursion' | 'other';

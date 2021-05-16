@@ -32,14 +32,14 @@ const S = {
 };
 
 const SubmitArea: FC<SubmitAreaProps> = ({ onClick, ...props }) => (
-    <Area>
-      <S.Wrapper>
-        <SubmitStatus {...props} />
-        <S.ButtonDiv>
-          <Button color="primary" value="Send inn" onClick={onClick} disabled={props.submitted || props.loading} />
-        </S.ButtonDiv>
-      </S.Wrapper>
-    </Area>
-  );
+  <Area>
+    <S.Wrapper>
+      <SubmitStatus {...props} />
+      <S.ButtonDiv>
+        <Button color="primary" value="Send inn" onClick={onClick} disabled={props.submitted || props.loading} />
+      </S.ButtonDiv>
+    </S.Wrapper>
+  </Area>
+);
 
 export default SubmitArea;

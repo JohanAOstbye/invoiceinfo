@@ -27,10 +27,10 @@ const S = {
 };
 
 const Area: FC<AreaProps> = ({ title, children }) => (
-    <S.Section>
-      {title && <S.Title>{title}</S.Title>}
-      {children}
-    </S.Section>
-  );
+  <S.Section>
+    {title && <S.Title>{title}</S.Title>}
+    {children}
+  </S.Section>
+);
 
 export default Area;

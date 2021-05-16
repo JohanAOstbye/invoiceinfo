@@ -37,20 +37,17 @@ const InvoiceArea: FC<{}> = () => {
   const { values }: FormikProps<FormikValues> = useFormikContext();
   return (
     <Area title="Fakturainformasjon">
-      <TextField name="orgnr" label="Organisasjonsnummer" placeholder="Bedrift AS" />
-      <Select
-      name="delivery"
-      options={delivery}
-      label="delivery"
-      />
-      {(values.delivery !== "ehf" && values.delivery !== "") ? (
+      <TextField name="orgnr" label="Organisasjonsnummer" placeholder="Organisasjonsnummer" />
+      <Select name="delivery" options={delivery} label="delivery" />
+      {values.delivery !== 'ehf' && values.delivery !== '' ? (
         <TextField name="deliveryLocation" label={values.delivery} placeholder={`Ønsket ${values.delivery}`} />
-      ): null}
+      ) : null}
       <S.Div>
-      <ExtraInfo name="ponumber" label="PO nummer"/>
-      <ExtraInfo name="duedate" label="spesiell forfallsdato"/>
+        <ExtraInfo name="ponumber" label="PO nummer" />
+        <ExtraInfo name="duedate" label="spesiell forfallsdato" />
       </S.Div>
     </Area>
-  )};
+  );
+};
 
 export default InvoiceArea;

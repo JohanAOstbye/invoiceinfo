@@ -14,7 +14,9 @@ const SubmitStatus: FC<SubmitStatusProps> = ({ loading, submitCount, isValid, su
   if (loading) return <Spinner />;
   if (hasError)
     return (
-      <Message status="error">Noe gikk galt under innsending av fakturainformasjonen, Venligst send en beskrivende mail</Message>
+      <Message status="error">
+        Noe gikk galt under innsending av fakturainformasjonen, Venligst send en beskrivende mail
+      </Message>
     );
   if (submitted) return <Message status="success">Fakturainformasjon har blitt sendt inn</Message>;
   if (submitCount > 0 && !isValid)

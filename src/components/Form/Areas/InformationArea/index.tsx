@@ -4,7 +4,6 @@ import { colors, md } from '@dotkomonline/design-system';
 import Area from '../../../Area';
 import { introText } from './informationText';
 
-
 const S = {
   Wrapper: styled.div`
     font-size: 1rem;
@@ -22,17 +21,16 @@ const S = {
   `,
 };
 
-
-const InformationArea = ():JSX.Element => (
-    <Area>
-      <S.Wrapper>
-        {md`${introText}`}
-        {/* <S.Details>
+const InformationArea = (): JSX.Element => (
+  <Area>
+    <S.Wrapper>
+      {md`${introText}`}
+      {/* <S.Details>
           <summary>Les mer om produkter</summary>
           {md`${productDetails}`}
         </S.Details> */}
-      </S.Wrapper>
-    </Area>
-  );
+    </S.Wrapper>
+  </Area>
+);
 
 export default InformationArea;

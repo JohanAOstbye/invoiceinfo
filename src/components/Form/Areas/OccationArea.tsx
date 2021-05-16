@@ -49,11 +49,7 @@ const S = {
 const OccationArea = () => (
   <Area title="Velg anledningen fakturaen skal sendes for">
     <S.Div>
-      <Select
-        name="occation"
-        options={occations}
-        label="Anledning"
-       />
+      <Select name="occation" options={occations} label="Anledning" />
     </S.Div>
   </Area>
 );

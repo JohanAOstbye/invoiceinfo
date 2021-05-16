@@ -23,19 +23,18 @@ const StyledSelect = styled(ReactSelect)`
   appearance: none;
 `;
 
-
 const S = {
-    Wrapper: styled.div`
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1.3rem;
-  
-      & > div {
-        max-width: 500px;
-        width: 100%;
-      }
-    `,
-  };
+  Wrapper: styled.div`
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.3rem;
+
+    & > div {
+      max-width: 500px;
+      width: 100%;
+    }
+  `,
+};
 
 const SelectTest = ({ options, ...rest }: SelectPropsTest) => <StyledSelect options={options} {...rest} />;
 
@@ -53,11 +52,14 @@ interface SelectProps {
 const SelectBase = ({ ...props }: SelectProps) => {
   const [field, meta, helpers] = useField({ type: 'select', ...props });
   const { setValue } = helpers;
-  const [selectedOption, setSelectedOption]: [OptionType | undefined, Dispatch<SetStateAction<OptionType | undefined>>] = useState();
+  const [selectedOption, setSelectedOption]: [
+    OptionType | undefined,
+    Dispatch<SetStateAction<OptionType | undefined>>
+  ] = useState();
 
   const handleChange = (option: OptionType) => {
     setSelectedOption(option);
-    setValue(option.value)
+    setValue(option.value);
   };
 
   return (
@@ -68,7 +70,6 @@ const SelectBase = ({ ...props }: SelectProps) => {
         options={props.options}
         value={selectedOption}
         onChange={(option: OptionType) => handleChange(option)}
-        
       />
       {meta.error && meta.touched && <div>{meta.error}</div>}
     </S.Wrapper>

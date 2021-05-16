@@ -19,7 +19,7 @@ const CheckboxBase = ({ label, ...props }: CheckboxProps) => {
   };
 
   useEffect(() => {
-    setValue(isChecked)
+    setValue(isChecked);
   }, [isChecked]);
 
   return (

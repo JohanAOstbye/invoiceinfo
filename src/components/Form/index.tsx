@@ -22,7 +22,7 @@ const Form = styled.form`
   margin: 2rem 0;
 `;
 
-const InterestForm = ():JSX.Element => {
+const InterestForm = (): JSX.Element => {
   const [submitted, setSubmitted] = useState(false);
   const [hasError, setHasError] = useState(false);
 
@@ -76,7 +76,7 @@ const InterestForm = ():JSX.Element => {
             <CompanyArea />
             <ContactPersonArea />
             <OccationArea />
-            <InvoiceArea/>
+            <InvoiceArea />
             <CommentsArea />
             <SubmitArea
               onClick={submit}
@@ -92,6 +92,5 @@ const InterestForm = ():JSX.Element => {
     </Formik>
   );
 };
-
 
 export default InterestForm;
