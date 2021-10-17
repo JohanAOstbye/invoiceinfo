@@ -69,6 +69,7 @@ const InterestForm = (): JSX.Element => {
         };
         // Checks if errors is empty. 0 will turn into true, anything else is false
         const isValid = !Object.keys(errors).length;
+        console.log(errors)
         return (
           <Form>
             <Banner />

@@ -67,6 +67,7 @@ const SelectBase = ({ ...props }: SelectProps) => {
       <SelectTest
         {...field}
         name={props.name}
+        placeholder={props.label}
         options={props.options}
         value={selectedOption}
         onChange={(option: OptionType) => handleChange(option)}

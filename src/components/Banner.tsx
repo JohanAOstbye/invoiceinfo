@@ -24,7 +24,7 @@ export const Banner: React.FC = () => (
   <>
     <S.Header>
       <Logo width="75%" primaryColor={colors.white} secondaryColor={colors.secondary} />
-      <S.Title>innsending av Fakutrainformasjon</S.Title>
+      <S.Title>Innsending av fakturainformasjon</S.Title>
     </S.Header>
   </>
 );

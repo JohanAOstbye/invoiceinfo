@@ -18,7 +18,14 @@ const ExtraInfo: FC<ExtraInfoProps> = ({ name, label }) => {
   return (
     <div>
       <Checkbox label={`Ønsker ${label}`} name={boolname} value={boolname} />
-      {values[boolname] ? <TextField name={name} placeholder={label} /> : null}
+      {values[boolname] ? 
+        <>
+          <br/>
+          <TextField name={name} placeholder={label} />
+        </>
+        : 
+        null
+      }
     </div>
   );
 };

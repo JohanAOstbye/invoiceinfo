@@ -17,6 +17,8 @@
     "eslint-config-blvd": "^1.1.1",
     "eslint-config-prettier": "^8.3.0",
     "formik": "^2.2.6",
+    "gatsby-source-filesystem": "^3.14.0",
+    "google-spreadsheet": "^3.1.15",
     "markdown-to-jsx": "^7.1.2",
     "prettier": "^2.3.0",
     "react": "^17.0.2",
@@ -56,5 +58,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "serverless-plugin-optimize": "^4.2.1-rc.1",
+    "serverless-s3-sync": "^1.17.1"
   }
 }

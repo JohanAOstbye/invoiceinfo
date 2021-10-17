@@ -9,7 +9,8 @@ const S = {
   Wrapper: styled.div`
     display: flex;
     justify-content: center;
-    margin-bottom: 1.3rem;
+    margin-bottom: 0.7rem;
+    margin-top: 0.3rem;
 
     & > div {
       max-width: 500px;

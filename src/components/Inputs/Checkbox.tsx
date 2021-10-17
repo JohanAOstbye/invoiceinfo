@@ -24,7 +24,7 @@ const CheckboxBase = ({ label, ...props }: CheckboxProps) => {
 
   return (
     <>
-      <DsCheckbox {...field} label={label} isChecked={isChecked} {...props} onChange={handleChange} />
+      <DsCheckbox {...field} label={label} {...props} onChange={handleChange} />
       {meta.error && meta.touched && <div>{meta.error}</div>}
     </>
   );

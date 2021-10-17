@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import Area from '../../Area';
 import Select, { OptionType } from '../../Inputs/Select';
@@ -46,7 +46,8 @@ const S = {
   `,
 };
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const OccationArea = () => (
+// eslint-disable-next-line @typescript-eslint/ban-types
+const OccationArea:FC<{}> = () => (
   <Area title="Velg anledningen fakturaen skal sendes for">
     <S.Div>
       <Select name="occation" options={occations} label="Anledning" />

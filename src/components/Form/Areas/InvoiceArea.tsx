@@ -37,8 +37,8 @@ const InvoiceArea: FC<{}> = () => {
   const { values }: FormikProps<FormikValues> = useFormikContext();
   return (
     <Area title="Fakturainformasjon">
-      <TextField name="orgnr" label="Organisasjonsnummer" placeholder="Organisasjonsnummer" />
-      <Select name="delivery" options={delivery} label="delivery" />
+      <TextField name="orgnr" label="orgnr" placeholder="Organisasjonsnummer" />
+      <Select name="delivery" options={delivery} label="Leverings metode" />
       {values.delivery !== 'ehf' && values.delivery !== '' ? (
         <TextField name="deliveryLocation" label={values.delivery} placeholder={`Ønsket ${values.delivery}`} />
       ) : null}
