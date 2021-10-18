@@ -3,9 +3,16 @@ service: invoiceinfo-mailer
 
 provider:
   name: aws
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - 's3:GetObject'
+          Resource: "arn:aws:s3:::interest-mailer-authfile/*"
   runtime: nodejs14.x
   stage: prod
-  region: eu-west-1
+  region: eu-north-1
 
 functions:
   invoice-mailer:
