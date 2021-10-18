@@ -29,7 +29,7 @@ export const mailer = async (data: FormData, authFile: GoogleAuthFile): Promise<
   await transporter.sendMail({
     from: SENDER_EMAIL,
     to: RECIEVER,
-    subject: `[Interesse] ${data.companyName}`,
+    subject: `[Fakturainformasjon] ${data.companyName}`,
     html: getFormattedData(data, false),
   });
 
@@ -37,7 +37,7 @@ export const mailer = async (data: FormData, authFile: GoogleAuthFile): Promise<
   await transporter.sendMail({
     from: SENDER_EMAIL,
     to: data.contactMail,
-    subject: `Deres interesse har blitt meldt`,
+    subject: `Deres Fakturainformasjon har blitt registrert`,
     html: getFormattedData(data, true),
   });
   return true;

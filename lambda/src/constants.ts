@@ -19,7 +19,12 @@ export const INVALID_DATA: Response = {
   },
 };
 
-export const SERVER_ERROR = (err: string): Response => {
+export const SERVER_ERROR = (err: string | unknown): Response => {
+  if(typeof err == "string") {
+    err = err
+  } else {
+    err = typeof err
+  }
   return {
     statusCode: 500,
     body: `Something went wrong on the server!\n${err}`,

@@ -1,11 +1,11 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
-import { GoogleAuthFile } from './util/authFile';
+import { GoogleAuthFile, googleAuthKeys } from './util/authFile';
 import { SPREADSHEET_ID } from './constants';
 import { FormData } from '../../src/common/FormData';
 
 export const spreadsheet = async (data: FormData, authFile: GoogleAuthFile): Promise<boolean> => {
   const { companyName, orgnr, contactName, contactMail, phone, comments, occation, ponumber, duedate, deliveryAdress } = data;
-  if (!SPREADSHEET_ID) {
+  if (SPREADSHEET_ID !== undefined) {
     throw new Error('Spreadsheet not found');
   }
   const doc = new GoogleSpreadsheet(SPREADSHEET_ID);
