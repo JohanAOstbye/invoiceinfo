@@ -23,7 +23,7 @@ export const SERVER_ERROR = (err: string | unknown): Response => {
   if(typeof err == "string") {
     err = err
   } else {
-    err = typeof err
+    err = JSON.stringify(err);
   }
   return {
     statusCode: 500,
