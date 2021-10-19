@@ -22,7 +22,20 @@ const slugToText = (slug: string): string => {
 };
 
 export const getFormattedData = (form: FormData, isConfirmMail: boolean) => {
-  const { companyName, orgnr, contactName, contactMail, phone, comments, occation, ponumber, isponumber, duedate, isduedate, deliveryAdress } = form;
+  const {
+    companyName,
+    orgnr,
+    contactName,
+    contactMail,
+    phone,
+    comments,
+    occation,
+    ponumber,
+    isponumber,
+    duedate,
+    isduedate,
+    deliveryAdress,
+  } = form;
   const intro = isConfirmMail
     ? 'Vi vil meddele at deres fakturainformasjon med følgende data har blitt sendt inn:'
     : 'En bedrift har sendt inn fakturainformasjon';
@@ -36,7 +49,7 @@ export const getFormattedData = (form: FormData, isConfirmMail: boolean) => {
       <p>Telefon: ${phone} <br><br></p>
       <p><strong>anledning: ${occation}</strong></p>
       <p><strong>Ekstra info:</strong></p>
-      ${isponumber ? `<p>Ponummer: ${ponumber} <br><br></p>`: "fdf"}
+      ${isponumber ? `<p>Ponummer: ${ponumber} <br><br></p>` : 'fdf'}
       <p><strong>Kommentarer</strong></p>
       <p>${comments}</p>
   `;

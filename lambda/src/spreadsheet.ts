@@ -4,7 +4,8 @@ import { SPREADSHEET_ID } from './constants';
 import { FormData } from '../../src/common/FormData';
 
 export const spreadsheet = async (data: FormData, authFile: GoogleAuthFile): Promise<boolean> => {
-  const { companyName, orgnr, contactName, contactMail, phone, comments, occation, ponumber, duedate, deliveryAdress } = data;
+  const { companyName, orgnr, contactName, contactMail, phone, comments, occation, ponumber, duedate, deliveryAdress } =
+    data;
   if (SPREADSHEET_ID !== undefined) {
     throw new Error('Spreadsheet not found');
   }

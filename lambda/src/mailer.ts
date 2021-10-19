@@ -9,7 +9,7 @@ import { GoogleAuthFile } from './util/authFile';
 export const mailer = async (data: FormData, authFile: GoogleAuthFile): Promise<boolean> => {
   // Validates incomming data
   await ValidationSchema.validate(data).catch((err: ValidationError) => {
-    console.log("mailer vaidation")
+    console.log('mailer vaidation');
     console.log(err);
     throw err;
   });

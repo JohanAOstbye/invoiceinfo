@@ -16,16 +16,16 @@ export interface GoogleAuthFile {
 }
 
 export const googleAuthKeys = [
-  "type",
-  "project_id",
-  "private_key_id",
-  "private_key",
-  "client_email",
-  "client_id",
-  "auth_uri",
-  "token_uri",
-  "auth_provider_x509_cert_url",
-  "client_x509_cert_url"
+  'type',
+  'project_id',
+  'private_key_id',
+  'private_key',
+  'client_email',
+  'client_id',
+  'auth_uri',
+  'token_uri',
+  'auth_provider_x509_cert_url',
+  'client_x509_cert_url',
 ];
 
 export const getAuthFile = () => {
@@ -39,22 +39,22 @@ export const getAuthFile = () => {
     auth_uri: '',
     token_uri: '',
     auth_provider_x509_cert_url: '',
-    client_x509_cert_url: ''
+    client_x509_cert_url: '',
   };
-  if (googleAuthKeys.filter(key => key in env).length == 0) {
-    authfile.type = String(env.type)
-    authfile.project_id = String(env.project_id)
-    authfile.private_key_id = String(env.private_key_id)
-    authfile.private_key = String(env.private_key)
-    authfile.client_email = String(env.client_email)
-    authfile.client_id = String(env.client_id)
-    authfile.auth_uri = String(env.auth_uri)
-    authfile.token_uri = String(env.token_uri)
-    authfile.auth_provider_x509_cert_url = String(env.auth_provider_x509_cert_url)
-    authfile.client_x509_cert_url = String(env.client_x509_cert_url)
-  };
+  if (googleAuthKeys.filter((key) => key in env).length == 0) {
+    authfile.type = String(env.type);
+    authfile.project_id = String(env.project_id);
+    authfile.private_key_id = String(env.private_key_id);
+    authfile.private_key = String(env.private_key);
+    authfile.client_email = String(env.client_email);
+    authfile.client_id = String(env.client_id);
+    authfile.auth_uri = String(env.auth_uri);
+    authfile.token_uri = String(env.token_uri);
+    authfile.auth_provider_x509_cert_url = String(env.auth_provider_x509_cert_url);
+    authfile.client_x509_cert_url = String(env.client_x509_cert_url);
+  }
   return authfile;
-}
+};
 // export const getAuthFile = async (): Promise<null | GoogleAuthFile> => {
 //   AWS.config.update({ region: 'eu-north-1' });
 

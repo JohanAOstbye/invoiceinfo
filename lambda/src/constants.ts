@@ -20,8 +20,8 @@ export const INVALID_DATA: Response = {
 };
 
 export const SERVER_ERROR = (err: string | unknown): Response => {
-  if(typeof err == "string") {
-    err = err
+  if (typeof err == 'string') {
+    err = err;
   } else {
     err = JSON.stringify(err);
   }
