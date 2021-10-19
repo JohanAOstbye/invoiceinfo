@@ -19,9 +19,7 @@ const SubmitStatus: FC<SubmitStatusProps> = ({ loading, submitCount, isValid, su
       </Message>
     );
   if (submitted) return <Message status="success">Fakturainformasjon har blitt sendt inn</Message>;
-  if (submitCount > 0 && !isValid)
-      console.log(`hei${submitCount} ${!isValid}`);
-      
+  if (submitCount > 0 && !isValid)      
     return <Message status="error">Venligst sjekk alle at alle feltene er gyldig</Message>;
   return <div />;
 };

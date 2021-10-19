@@ -1,0 +1,35 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "invokeTarget": {
+                "target": "code",
+                "lambdaHandler": "src/handler.handler",
+                "projectRoot": "${workspaceFolder}/lambda"
+            },
+            "lambda": {
+                "runtime": "nodejs14.x",
+                "payload": {
+                    "json": {
+                        "companyName": "johan as",
+                        "contactName": "johanna  ost",
+                        "contactMail": "jo@nei.no",
+                        "phone": "91301594",
+                        "occation": "excursion",
+                        "orgnr": "992548045",
+                        "delivery": "ehf",
+                        "comments": "nei mann",
+                        "isduedate": false,
+                        "isponumber": false
+                    }
+                }
+            },
+            "sam": {
+                "containerBuild": false,
+                "skipNewImageCheck": false
+            },
+            "name": "lambda:src/handler.handler (nodejs14.x)"
+        }
+    ]
+}

@@ -16,7 +16,9 @@ export const handler: Handler = async (event, context, callback): Promise<Respon
 
   try {
     const data: FormData = await JSON.parse(event.body);
+    console.log(data);
     await mailer(data, authFile);
+    console.log("mailer done");
     await spreadsheet(data, authFile);
     return OkResponse;
   } catch (err) {
