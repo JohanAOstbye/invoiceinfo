@@ -42,8 +42,8 @@ const InvoiceArea: FC<{}> = () => {
         <TextField name="deliveryLocation" label={values.delivery} placeholder={`Ønsket ${values.delivery}`} />
       ) : null}
       <S.Div>
-        <ExtraInfo name="ponumber" label="PO nummer" />
-        <ExtraInfo name="duedate" label="spesiell forfallsdato" />
+        <ExtraInfo name="ponumber" label="PO-nummer" />
+        <ExtraInfo name="duedate" label="Foretrukket forfallsdato" />
       </S.Div>
     </Area>
   );
