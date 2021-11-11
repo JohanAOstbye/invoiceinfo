@@ -6,7 +6,7 @@ const CommentsArea = (): JSX.Element => (
   <Area title="Kommentarer">
     <TextArea
       name="comments"
-      placeholder="Om dere har noen ønsker utover infoen dere har fylt inn over, venligst skriv her"
+      placeholder="Dersom dere har noen ønsker utover det som er fylt inn ovenfor, vennligst skriv her"
     />
   </Area>
 );
