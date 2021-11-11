@@ -23,9 +23,7 @@ const S = {
 
 const InformationArea = (): JSX.Element => (
   <Area maxWidth>
-    <S.Wrapper>
-      {md`${introText}`}
-    </S.Wrapper>
+    <S.Wrapper>{md`${introText}`}</S.Wrapper>
   </Area>
 );
 

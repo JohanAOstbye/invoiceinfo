@@ -36,9 +36,9 @@ const occations: OptionType[] = [
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 // eslint-disable-next-line @typescript-eslint/ban-types
-const OccationArea:FC<{}> = () => (
+const OccationArea: FC<{}> = () => (
   <Area title="Velg anledningen fakturaen skal sendes for">
-      <Select name="occation" options={occations} label="Anledning" />
+    <Select name="occation" options={occations} label="Anledning" />
   </Area>
 );
 

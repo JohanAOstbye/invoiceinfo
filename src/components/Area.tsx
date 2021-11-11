@@ -4,7 +4,7 @@ import { colors, media } from '@dotkomonline/design-system';
 
 interface AreaProps {
   title?: string;
-  maxWidth?: boolean
+  maxWidth?: boolean;
 }
 
 const S = {
@@ -38,7 +38,7 @@ const S = {
 const Area: FC<AreaProps> = ({ title, maxWidth, children }) => (
   <S.Section>
     {title && <S.Title>{title}</S.Title>}
-    {maxWidth ? children : (<S.Div>{children}</S.Div>)}
+    {maxWidth ? children : <S.Div>{children}</S.Div>}
   </S.Section>
 );
 
