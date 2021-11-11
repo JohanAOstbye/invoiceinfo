@@ -14,7 +14,7 @@ export const spreadsheet = async (data: FormData, authFile: GoogleAuthFile): Pro
   await doc.loadInfo();
 
   const sheet = doc.sheetsByIndex[0];
-  const row = {
+  const row: { [key: string]: string | boolean } = {
     companyName,
     orgnr,
     contactName,
@@ -32,6 +32,7 @@ export const spreadsheet = async (data: FormData, authFile: GoogleAuthFile): Pro
     duedate,
     deliveryAdress,
   };
+
   row[occation] = true;
 
   await sheet.addRow(row);
