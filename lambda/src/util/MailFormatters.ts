@@ -15,7 +15,7 @@ const slugToText = (slug: string): string => {
     case 'excursion':
       return 'IT-ekskrusjon';
     case 'other':
-      return 'Andre';
+      return 'Annet';
     default:
       return '';
   }
@@ -34,6 +34,7 @@ export const getFormattedData = (form: FormData, isConfirmMail: boolean) => {
     isponumber,
     duedate,
     isduedate,
+    delivery,
     deliveryAdress,
   } = form;
   const intro = isConfirmMail
@@ -43,13 +44,18 @@ export const getFormattedData = (form: FormData, isConfirmMail: boolean) => {
       <p>${intro}</p>
       <p><strong>Bedrift</strong></p>
       <p>Bedriftsnavn: ${companyName}<br><br></p>
+      <p>Organisjansjonsnummer: ${orgnr}<br><br></p>
       <p><strong>Kontaktperson</strong></p>
       <p>Navn: ${contactName}</p>
       <p>E-post: ${contactMail}</p>
       <p>Telefon: ${phone} <br><br></p>
-      <p><strong>anledning: ${occation}</strong></p>
+      <p><strong>anledning: ${slugToText(occation)}</strong></p>
       <p><strong>Ekstra info:</strong></p>
-      ${isponumber ? `<p>Ponummer: ${ponumber} <br><br></p>` : 'fdf'}
+      ${isponumber ? `<p>Ponummer: ${ponumber} <br><br></p>` : ''}
+      ${isduedate ? `<p>Forfallsdato: ${duedate} <br><br></p>` : ''}
+      <p>leveringsmetode: ${delivery}<br><br></p>
+      ${delivery == 'epost' ? `<p>Epost for levering: ${deliveryAdress} <br><br></p>` : ''}
+      ${delivery == 'adresse' ? `<p>Adresse for levering: ${deliveryAdress} <br><br></p>` : ''}
       <p><strong>Kommentarer</strong></p>
       <p>${comments}</p>
   `;

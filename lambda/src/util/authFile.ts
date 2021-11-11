@@ -1,5 +1,3 @@
-import AWS from 'aws-sdk';
-import { GetObjectRequest } from 'aws-sdk/clients/s3';
 import { env } from 'process';
 
 export interface GoogleAuthFile {
