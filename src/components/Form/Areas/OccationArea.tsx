@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 import Area from '../../Area';
 import Select, { OptionType } from '../../Inputs/Select';
 
@@ -35,23 +34,11 @@ const occations: OptionType[] = [
   },
 ];
 
-const S = {
-  Div: styled.div`
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-rows: repeat(1fr);
-    max-width: 500px;
-    width: 100%;
-    margin: 0 auto;
-  `,
-};
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 // eslint-disable-next-line @typescript-eslint/ban-types
 const OccationArea:FC<{}> = () => (
   <Area title="Velg anledningen fakturaen skal sendes for">
-    <S.Div>
       <Select name="occation" options={occations} label="Anledning" />
-    </S.Div>
   </Area>
 );
 

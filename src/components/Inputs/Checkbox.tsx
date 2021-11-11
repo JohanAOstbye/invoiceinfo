@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Checkbox as DsCheckbox } from '@dotkomonline/design-system';
+import React from 'react';
+import { CheckboxControl } from "formik-chakra-ui"
 import { useField } from 'formik';
 import styled from 'styled-components';
 
@@ -10,21 +10,14 @@ interface CheckboxProps {
 }
 
 const CheckboxBase = ({ label, ...props }: CheckboxProps) => {
-  const [field, meta, helpers] = useField({ type: 'checkbox', ...props });
-  const { setValue } = helpers;
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleChange = (checked?: boolean) => {
-    setIsChecked(!!checked);
-  };
-
-  useEffect(() => {
-    setValue(isChecked);
-  }, [isChecked]);
-
+  const [field, meta] = useField({ type: 'checkbox', ...props });
+  const {value, onChange } = field
   return (
     <>
-      <DsCheckbox {...field} label={label} {...props} onChange={handleChange} />
+      <CheckboxControl
+      {...value} 
+      name={props.name} 
+      onChange={(e) => {onChange(e)}} >{label}</CheckboxControl>
       {meta.error && meta.touched && <div>{meta.error}</div>}
     </>
   );

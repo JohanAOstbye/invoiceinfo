@@ -1,5 +1,5 @@
 import { FormikProps, FormikValues, useFormikContext } from 'formik';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import Checkbox from './Checkbox';
 import TextField from './TextField';
 
@@ -14,9 +14,10 @@ const ExtraInfo: FC<ExtraInfoProps> = ({ name, label }) => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   useEffect(() => {
 
-  }, [values]);
+  }, [values[name]]);
 
   const boolname = `is${name}`;
+  
   return (
     <div>
       <Checkbox label={`Ønsker ${label}`} name={boolname} value={values[boolname]} />

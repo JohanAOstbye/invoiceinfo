@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { GlobalStyle as DsStyle } from '@dotkomonline/design-system';
 import Helmet from 'react-helmet';
 import normalize from '../styles/normalize';
 
@@ -32,7 +31,6 @@ const Layout: React.FC<LayoutProps> = ({ children, className }) => (
       />
     </Helmet>
     <GlobalStyle />
-    <DsStyle />
     <StyledLayout className={className}>
       <Page>{children}</Page>
     </StyledLayout>

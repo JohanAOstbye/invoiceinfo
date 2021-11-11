@@ -1,4 +1,5 @@
 export const SENDER_EMAIL = process.env.SENDER || 'bedrift-interesse@online.ntnu.no';
+export const LOGIN_EMAIL = process.env.client_email || 'fakturainformasjon@online.ntnu.no';
 export const RECIEVER = process.env.RECIEVER;
 export const SPREADSHEET_ID = process.env.SHEET_ID;
 

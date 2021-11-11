@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
-import React, { FormEvent, useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import { Box } from '@dotkomonline/yacl';
+import { useToast } from '@chakra-ui/react';
 import { FormData } from '../../common/FormData';
 import { ValidationSchema } from '../../common/ValidaitonSchema';
 import InformationArea from './Areas/InformationArea';
@@ -12,26 +13,17 @@ import CommentsArea from './Areas/CommentsArea';
 import SubmitArea from './Areas/SubmitArea';
 import InvoiceArea from './Areas/InvoiceArea';
 
-const Form = styled.form`
-  height: 100%;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), inset 0 0 40px rgba(0, 0, 0, 0.1);
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 0;
-`;
-
 const InterestForm = (): JSX.Element => {
   const [submitted, setSubmitted] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const toast = useToast();
 
   const initialValues: FormData = {
     companyName: '',
     contactName: '',
     contactMail: '',
     phone: '',
-    occation: 'other',
+    occation: '',
     orgnr: '',
     delivery: '',
     deliveryAdress: '',
@@ -41,12 +33,27 @@ const InterestForm = (): JSX.Element => {
     isponumber: false,
     ponumber: '',
   };
+
+  const errormap = new Map([
+    ['companyName', 'bedriftsnavn'],
+    ['contactName', 'kontaktperon - navn'],
+    ['contactMail', 'kontaktperon - mail'],
+    ['phone', 'kontaktperon - telefonnummer'],
+    ['occation', 'anledning'],
+    ['orgnr', 'organisasjonsnummer'],
+    ['delivery', 'leveringsmetode'],
+    ['deliveryAdress', 'Adresse - leveringsmetode'],
+    ['comments', 'kommetarer'],
+    ['duedate', 'forfallsdato'],
+    ['ponumber', 'ponummer'],
+  ]);
+
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={async (values) => {
         try {
-          const res = await fetch(`https://dg34nuugf4.execute-api.eu-west-1.amazonaws.com/prod/sendMail`, {
+          const res = await fetch(`https://pgs9depyui.execute-api.eu-north-1.amazonaws.com/prod/sendMail`, {
             method: 'post',
             headers: {
               'Content-Type': 'application/json',
@@ -56,22 +63,46 @@ const InterestForm = (): JSX.Element => {
           if (res.status === 200) setSubmitted(true);
         } catch (err) {
           // eslint-disable-next-line no-console
-          console.log(err);
+          console.log(`mail error: ${err}`);
           setHasError(true);
         }
+
+        if (hasError)
+          toast({
+            title: 'Sending feilet!',
+            description: 'Noe gikk galt under innsending av fakturainformasjonen, Venligst send en beskrivende mail',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+          });
+
+        if (submitted)
+          toast({
+            title: 'Fakturainformasjon sendt!',
+            description: 'en konfirmasjonsmail vil bli sendt til kontakt mail',
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          });
       }}
       validationSchema={ValidationSchema}
     >
-      {({ isSubmitting, setSubmitting, submitForm, errors, submitCount }) => {
-        const submit = async (e: FormEvent<HTMLFormElement>) => {
-          e.preventDefault();
-          await submitForm().then(() => setSubmitting(false));
-        };
-        // Checks if errors is empty. 0 will turn into true, anything else is false
+      {({ isSubmitting, setSubmitting, submitForm, errors, submitCount, values }) => {
         const isValid = !Object.keys(errors).length;
-        console.log(`errors: ${  Object.keys(errors).join("")}`)
+        const newErrors = Object.keys(errors).map((err) => errormap.get(err));
+        // TODO: remove console.log
+        // eslint-disable-next-line no-console
+        console.log(`errors: ${newErrors.join(', ')}`);
+        const submit = async (e: { preventDefault: () => void }) => {
+          e.preventDefault();
+          await submitForm().then(() => {
+            setSubmitting(false);
+          });
+        };
+
+        // Checks if errors is empty. 0 will turn into true, anything else is false
         return (
-          <Form>
+          <Box>
             <Banner />
             <InformationArea />
             <CompanyArea />
@@ -80,14 +111,18 @@ const InterestForm = (): JSX.Element => {
             <InvoiceArea />
             <CommentsArea />
             <SubmitArea
-              onClick={submit}
               loading={isSubmitting}
-              submitted={submitted}
-              isValid={isValid}
+              submit={submit}
               submitCount={submitCount}
-              hasError={hasError}
+              isInvalid={!isValid}
+              errors={newErrors.join(', ')}
             />
-          </Form>
+            <Box as="pre" marginY={10}>
+              {JSON.stringify(values, null, 2)}
+              <br />
+              {JSON.stringify(errors, null, 2)}
+            </Box>
+          </Box>
         );
       }}
     </Formik>

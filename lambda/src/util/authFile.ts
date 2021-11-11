@@ -45,7 +45,7 @@ export const getAuthFile = () => {
     authfile.type = String(env.type);
     authfile.project_id = String(env.project_id);
     authfile.private_key_id = String(env.private_key_id);
-    authfile.private_key = String(env.private_key);
+    if (env.private_key) authfile.private_key = env.private_key;
     authfile.client_email = String(env.client_email);
     authfile.client_id = String(env.client_id);
     authfile.auth_uri = String(env.auth_uri);
