@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { OnlineTheme, ThemeProvider } from '@dotkomonline/yacl';
 import Layout from './components/layout';
 import InterestForm from './components/Form';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Layout>
-      <InterestForm />
-    </Layout>
+    <ThemeProvider theme={OnlineTheme} resetCSS>
+      <Layout>
+        <InterestForm />
+      </Layout>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -2,6 +2,8 @@
 
 Page for genenration invoiceinfo
 
+Next: bankomside med kvittering godkjenning med oppkobling til arrangement
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

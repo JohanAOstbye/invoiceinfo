@@ -14,4 +14,4 @@ export interface FormData {
   ponumber: string;
 }
 
-export type Occation = 'bedpres' | 'kurs' | 'offline' | 'online_ad' | 'techtalks' | 'excursion' | 'other';
+export type Occation = '' | 'bedpres' | 'kurs' | 'offline' | 'online_ad' | 'techtalks' | 'excursion' | 'other';

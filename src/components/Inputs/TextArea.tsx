@@ -1,9 +1,15 @@
+import React, { FC } from 'react';
 import { useField } from 'formik';
-import React, { FC, ComponentProps } from 'react';
-import { TextArea as DsTextArea } from '@dotkomonline/design-system';
+import { TextareaControl } from 'formik-chakra-ui';
 import styled from 'styled-components';
 
-type TextAreaProps = ComponentProps<typeof DsTextArea>;
+type TextAreaProps = {
+  name: string;
+  onBlur?: () => void;
+  onChange?: () => void;
+  value?: string;
+  placeholder: string;
+};
 
 const S = {
   Wrapper: styled.div`
@@ -14,22 +20,21 @@ const S = {
       max-width: 500px;
     }
   `,
-  TextArea: styled(DsTextArea)`
-    height: 100px;
-  `,
 };
 
 const TextArea: FC<TextAreaProps> = (props) => {
-  const { name, onBlur, onChange, value } = props;
+  const { name, onBlur, onChange, value, placeholder } = props;
   const [field, meta] = useField<string>({ name, onBlur, onChange, value });
+
   return (
     <S.Wrapper>
-      <S.TextArea
-        errorMessage={meta.error && meta.touched ? meta.error : undefined}
-        status={meta.touched ? (meta.error ? 'error' : 'success') : undefined}
+      <TextareaControl
+        textareaProps={{ placeholder }}
+        isInvalid={meta.touched ? !!meta.error : false}
         {...field}
         {...props}
       />
+      <br />
     </S.Wrapper>
   );
 };

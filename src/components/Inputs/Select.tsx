@@ -1,27 +1,7 @@
+import React from 'react';
 import { useField } from 'formik';
-import React, { Dispatch, SetStateAction, useState } from 'react';
-// import { Select as DsSelect } from '@dotkomonline/design-system';
-// import styled from 'styled-components';
-import ReactSelect from 'react-select';
-import styled, { StyledComponentProps } from 'styled-components';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface SelectPropsTest extends StyledComponentProps<'select', any, any, any> {
-  options: OptionType[];
-}
-
-const StyledSelect = styled(ReactSelect)`
-  transition: all 0.2s;
-  padding: 8px 20px 8px 8px;
-  background: #fff;
-  border-radius: 3px;
-  border: 2px solid #ababab;
-  cursor: pointer;
-  &:hover {
-    border-color: #blue;
-  }
-  appearance: none;
-`;
+import { SelectControl } from 'formik-chakra-ui';
+import styled from 'styled-components';
 
 const S = {
   Wrapper: styled.div`
@@ -36,7 +16,7 @@ const S = {
   `,
 };
 
-const SelectTest = ({ options, ...rest }: SelectPropsTest) => <StyledSelect options={options} {...rest} />;
+// const SelectTest = ({ options, ...rest }: SelectPropsTest) => <StyledSelect options={options} {...rest} />;
 
 export interface OptionType {
   value: string;
@@ -50,29 +30,23 @@ interface SelectProps {
 }
 
 const SelectBase = ({ ...props }: SelectProps) => {
-  const [field, meta, helpers] = useField({ type: 'select', ...props });
-  const { setValue } = helpers;
-  const [selectedOption, setSelectedOption]: [
-    OptionType | undefined,
-    Dispatch<SetStateAction<OptionType | undefined>>
-  ] = useState();
-
-  const handleChange = (option: OptionType) => {
-    setSelectedOption(option);
-    setValue(option.value);
-  };
+  const [field, meta] = useField({ type: 'select', ...props });
+  const placeholder = props.label;
 
   return (
     <S.Wrapper>
-      <SelectTest
+      <SelectControl
         {...field}
         name={props.name}
-        placeholder={props.label}
-        options={props.options}
-        value={selectedOption}
-        onChange={(option: OptionType) => handleChange(option)}
-      />
-      {meta.error && meta.touched && <div>{meta.error}</div>}
+        selectProps={{ placeholder }}
+        isInvalid={meta.error !== undefined && meta.touched}
+      >
+        {props.options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </SelectControl>
     </S.Wrapper>
   );
 };

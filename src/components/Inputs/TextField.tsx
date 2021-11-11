@@ -1,15 +1,23 @@
+import React, { FC } from 'react';
 import { useField } from 'formik';
-import React, { FC, ComponentProps } from 'react';
-import { TextField as DsTextField } from '@dotkomonline/design-system';
+import { InputControl } from 'formik-chakra-ui';
 import styled from 'styled-components';
 
-type TextFieldProps = ComponentProps<typeof DsTextField>;
+type TextFieldProps = {
+  name: string;
+  onBlur?: () => void;
+  onChange?: () => void;
+  value?: string;
+  placeholder: string;
+  label?: string;
+  type?: string;
+};
 
 const S = {
   Wrapper: styled.div`
-    display: flex;
+    display: flex-column;
     justify-content: center;
-    margin-bottom: 0.7rem;
+    margin-bottom: -1.7rem;
     margin-top: 0.3rem;
 
     & > div {
@@ -20,16 +28,17 @@ const S = {
 };
 
 const TextField: FC<TextFieldProps> = (props) => {
-  const { name, onBlur, onChange, value } = props;
+  const { name, onBlur, onChange, value, placeholder } = props;
   const [field, meta] = useField<string>({ name, onBlur, onChange, value });
   return (
     <S.Wrapper>
-      <DsTextField
-        errorMessage={meta.error && meta.touched ? meta.error : undefined}
-        status={meta.touched ? (meta.error ? 'error' : 'success') : undefined}
+      <InputControl
+        inputProps={{ placeholder }}
+        isInvalid={meta.touched ? !!meta.error : false}
         {...field}
         {...props}
       />
+      <br />
     </S.Wrapper>
   );
 };

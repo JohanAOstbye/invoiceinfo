@@ -16,19 +16,15 @@ const S = {
   Details: styled.details`
     margin: 1.25rem 0;
     summary {
-      margin-bot: 1rem;
+      margin-bottom: 1rem;
     }
   `,
 };
 
 const InformationArea = (): JSX.Element => (
-  <Area>
+  <Area maxWidth>
     <S.Wrapper>
       {md`${introText}`}
-      {/* <S.Details>
-          <summary>Les mer om produkter</summary>
-          {md`${productDetails}`}
-        </S.Details> */}
     </S.Wrapper>
   </Area>
 );

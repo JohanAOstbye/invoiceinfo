@@ -4,6 +4,7 @@ import { colors, media } from '@dotkomonline/design-system';
 
 interface AreaProps {
   title?: string;
+  maxWidth?: boolean
 }
 
 const S = {
@@ -24,12 +25,20 @@ const S = {
       padding: 10px 20px;
     }
   `,
+  Div: styled.div`
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-rows: repeat(1fr);
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+  `,
 };
 
-const Area: FC<AreaProps> = ({ title, children }) => (
+const Area: FC<AreaProps> = ({ title, maxWidth, children }) => (
   <S.Section>
     {title && <S.Title>{title}</S.Title>}
-    {children}
+    {maxWidth ? children : (<S.Div>{children}</S.Div>)}
   </S.Section>
 );
 

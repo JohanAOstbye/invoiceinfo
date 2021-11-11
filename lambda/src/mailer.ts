@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 import { ValidationError } from 'yup';
-import { RECIEVER, SENDER_EMAIL } from './constants';
+import { LOGIN_EMAIL, RECIEVER, SENDER_EMAIL } from './constants';
 import { getFormattedData } from './util/MailFormatters';
 import { ValidationSchema } from '../../src/common/ValidaitonSchema';
 import { FormData } from '../../src/common/FormData';
@@ -19,27 +19,37 @@ export const mailer = async (data: FormData, authFile: GoogleAuthFile): Promise<
     secure: true,
     auth: {
       type: 'OAuth2',
-      user: SENDER_EMAIL,
+      user: LOGIN_EMAIL,
       serviceClient: authFile.client_id,
       privateKey: authFile.private_key,
     },
   });
+  try {
+    transporter.on('token', (token) => {
+      console.log('A new access token was generated');
+      console.log('User: %s', token.user);
+      console.log('Access Token: %s', token.accessToken);
+      console.log('Expires: %s', new Date(token.expires));
+    });
+    await transporter.verify();
+    // Sends mail to bedkom
+    await transporter.sendMail({
+      from: LOGIN_EMAIL,
+      to: 'johan.ostbye@online.ntnu.no',
+      subject: `[Fakturainformasjon] ${data.companyName}`,
+      html: getFormattedData(data, false),
+    });
 
-  await transporter.verify();
-  // Sends mail to bedkom
-  await transporter.sendMail({
-    from: SENDER_EMAIL,
-    to: RECIEVER,
-    subject: `[Fakturainformasjon] ${data.companyName}`,
-    html: getFormattedData(data, false),
-  });
+    // Sends confirmation mail to the contact person
+    await transporter.sendMail({
+      from: LOGIN_EMAIL,
+      to: 'johan.ostbye@online.ntnu.no',
+      subject: `Deres Fakturainformasjon har blitt registrert`,
+      html: getFormattedData(data, true),
+    });
+  } catch (err) {
+    console.log(err);
+  }
 
-  // Sends confirmation mail to the contact person
-  await transporter.sendMail({
-    from: SENDER_EMAIL,
-    to: data.contactMail,
-    subject: `Deres Fakturainformasjon har blitt registrert`,
-    html: getFormattedData(data, true),
-  });
   return true;
 };
