@@ -1,7 +1,6 @@
-export const SENDER_EMAIL = process.env.SENDER || 'bedrift-interesse@online.ntnu.no';
-export const LOGIN_EMAIL = process.env.client_email || 'invoice-bot@online.ntnu.no';
-export const RECIEVER = process.env.RECIEVER;
-export const SPREADSHEET_ID = process.env.SHEET_ID;
+export const SENDER_EMAIL = process.env.SENDER || 'invoice-bot@online.ntnu.no';
+export const LOGIN_EMAIL = process.env.client_email || 'fakturainformasjon@invoice-info-online.iam.gserviceaccount.com';
+export const RECIEVER = 'fakturainformasjon@online.ntnu.no';
 
 interface Header {
   'Access-Control-Allow-Origin': '*';
@@ -28,7 +27,7 @@ export const SERVER_ERROR = (err: string | unknown): Response => {
   }
   return {
     statusCode: 500,
-    body: `Something went wrong on the server!\n${err}`,
+    body: `Something went wrong on the server!`,
     headers: {
       'Access-Control-Allow-Origin': '*',
     },

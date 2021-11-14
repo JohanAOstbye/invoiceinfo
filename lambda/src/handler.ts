@@ -3,7 +3,6 @@ import { INVALID_DATA, Response, INVALID_AUTHENTICATION, OkResponse, SERVER_ERRO
 import { mailer } from './mailer';
 import { FormData } from '../../src/common/FormData';
 import { getAuthFile } from './util/authFile';
-import { spreadsheet } from './spreadsheet';
 
 export const handler: Handler = async (event, context, callback): Promise<Response> => {
   if (!event.body) {
@@ -16,13 +15,9 @@ export const handler: Handler = async (event, context, callback): Promise<Respon
 
   try {
     const data: FormData = await JSON.parse(event.body);
-    console.log(data);
     await mailer(data, authFile);
-    console.log('mailer done');
-    await spreadsheet(data, authFile);
     return OkResponse;
   } catch (err) {
-    console.log(err);
     return SERVER_ERROR(err);
   }
 };

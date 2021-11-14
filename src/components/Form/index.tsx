@@ -62,8 +62,6 @@ const InterestForm = (): JSX.Element => {
           });
           if (res.status === 200) setSubmitted(true);
         } catch (err) {
-          // eslint-disable-next-line no-console
-          console.log(`mail error: ${err}`);
           setHasError(true);
         }
 
@@ -91,8 +89,6 @@ const InterestForm = (): JSX.Element => {
         const isValid = !Object.keys(errors).length;
         const newErrors = Object.keys(errors).map((err) => errormap.get(err));
         // TODO: remove console.log
-        // eslint-disable-next-line no-console
-        console.log(`errors: ${newErrors.join(', ')}`);
         const submit = async (e: { preventDefault: () => void }) => {
           e.preventDefault();
           await submitForm().then(() => {
