@@ -4,6 +4,7 @@ import { OnlineTheme, ThemeProvider } from '@dotkomonline/yacl';
 import Layout from './components/layout';
 import InterestForm from './components/Form';
 import reportWebVitals from './reportWebVitals';
+import './styles/styles.css';
 
 ReactDOM.render(
   <React.StrictMode>
