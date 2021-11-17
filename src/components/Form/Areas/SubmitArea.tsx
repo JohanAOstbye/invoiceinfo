@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
-import { SubmitButton, ResetButton, PercentComplete } from 'formik-chakra-ui';
+import { SubmitButton, ResetButton } from 'formik-chakra-ui';
 import { useToast } from '@chakra-ui/react';
 import { Stack } from '@dotkomonline/yacl';
 import Area from '../../Area';
@@ -46,7 +46,6 @@ const SubmitArea: FC<SubmitAreaProps> = ({ ...props }) => {
 
   return (
     <Area>
-      <PercentComplete />
       <S.Wrapper>
         <Stack direction="row" spacing={4}>
           <SubmitButton

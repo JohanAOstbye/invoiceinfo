@@ -24,16 +24,11 @@ const S = {
 
 const TextArea: FC<TextAreaProps> = (props) => {
   const { name, onBlur, onChange, value, placeholder } = props;
-  const [field, meta] = useField<string>({ name, onBlur, onChange, value });
+  const [field] = useField<string>({ name, onBlur, onChange, value });
 
   return (
     <S.Wrapper>
-      <TextareaControl
-        textareaProps={{ placeholder }}
-        isInvalid={meta.touched ? !!meta.error : false}
-        {...field}
-        {...props}
-      />
+      <TextareaControl textareaProps={{ placeholder }} {...field} {...props} />
       <br />
     </S.Wrapper>
   );
