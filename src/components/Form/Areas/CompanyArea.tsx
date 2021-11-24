@@ -3,6 +3,7 @@ import { FormikProps, FormikValues, useFormikContext } from 'formik';
 import axios from 'axios';
 import TextField from '../../Inputs/TextField';
 import Area from '../../Area';
+import NumberField from '../../Inputs/NumberField';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const CompanyArea: FC<{}> = () => {
@@ -30,7 +31,7 @@ const CompanyArea: FC<{}> = () => {
   }, [values.orgnr]);
   return (
     <Area title="Bedrift">
-      <TextField name="orgnr" label="Organisasjonsnummer" placeholder="460059275" />
+      <NumberField name="orgnr" label="Organisasjonsnummer" placeholder="460059275" />
       <TextField name="companyName" label="Bedriftsnavn" placeholder="Bedrift AS" />
     </Area>
   );
