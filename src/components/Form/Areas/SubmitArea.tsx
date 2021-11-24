@@ -50,15 +50,15 @@ const SubmitArea: FC<SubmitAreaProps> = ({ ...props }) => {
         <Stack direction="row" spacing={4}>
           <SubmitButton
             isLoading={loading}
-            loadingText="Submitting"
+            loadingText="Sender"
             colorScheme="blue"
             onClick={(e) => {
               submit(e);
             }}
           >
-            Submit
+            Send
           </SubmitButton>
-          <ResetButton colorScheme="blue">reset</ResetButton>
+          <ResetButton colorScheme="blue">Nullstill</ResetButton>
         </Stack>
       </S.Wrapper>
     </Area>
