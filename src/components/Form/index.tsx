@@ -113,11 +113,6 @@ const InterestForm = (): JSX.Element => {
               isInvalid={!isValid}
               errors={newErrors.join(', ')}
             />
-            <Box as="pre" marginY={10}>
-              {JSON.stringify(values, null, 2)}
-              <br />
-              {JSON.stringify(errors, null, 2)}
-            </Box>
           </Box>
         );
       }}
