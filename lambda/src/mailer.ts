@@ -9,7 +9,6 @@ import { GoogleAuthFile } from './util/authFile';
 export const mailer = async (data: FormData, authFile: GoogleAuthFile): Promise<boolean> => {
   // Validates incomming data
   await ValidationSchema.validate(data).catch((err: ValidationError) => {
-    console.log(err);
     throw err;
   });
   const transporter = nodemailer.createTransport({
