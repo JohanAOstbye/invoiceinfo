@@ -1,6 +1,5 @@
 service: invoiceinfo-mailer
 
-
 provider:
   name: aws
   iam:
@@ -9,7 +8,7 @@ provider:
         - Effect: 'Allow'
           Action:
             - 's3:GetObject'
-          Resource: "arn:aws:s3:::interest-mailer-authfile/*"
+          Resource: 'arn:aws:s3:::interest-mailer-authfile/*'
   runtime: nodejs14.x
   stage: prod
   region: eu-north-1
@@ -25,44 +24,6 @@ functions:
           method: POST
           cors: true
 
-resources:
-  Resources:
-    StaticSite:
-      Type: AWS::S3::Bucket
-      Properties:
-        AccessControl: PublicRead
-        BucketName: invoice-mailer
-        WebsiteConfiguration:
-          IndexDocument: index.html
-
-    StaticSiteS3BucketPolicy:
-      Type: AWS::S3::BucketPolicy
-      Properties:
-        Bucket:
-          Ref: StaticSite
-        PolicyDocument:
-          Statement:
-            - Sid: PublicReadGetObject
-              Effect: Allow
-              Principal: "*"
-              Action:
-              - s3:GetObject
-              Resource:
-                Fn::Join: [
-                  "", [
-                    "arn:aws:s3:::",
-                    {
-                      "Ref": "StaticSite"
-                    },
-                    "/*"
-                  ]
-                ]
-
-custom:
-  s3Sync:
-    - bucketName: invoice-mailer
-      localDir: build
-                
 plugins:
   - serverless-plugin-optimize
   - serverless-s3-sync
