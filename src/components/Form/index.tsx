@@ -85,10 +85,9 @@ const InterestForm = (): JSX.Element => {
       }}
       validationSchema={ValidationSchema}
     >
-      {({ isSubmitting, setSubmitting, submitForm, errors, submitCount, values }) => {
+      {({ isSubmitting, setSubmitting, submitForm, errors, submitCount }) => {
         const isValid = !Object.keys(errors).length;
         const newErrors = Object.keys(errors).map((err) => errormap.get(err));
-        // TODO: remove console.log
         const submit = async (e: { preventDefault: () => void }) => {
           e.preventDefault();
           await submitForm().then(() => {
