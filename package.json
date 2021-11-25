@@ -49,7 +49,9 @@
     "format-check": "tsc --noEmit && prettier --check 'src/**/*.{js,ts,tsx}'",
     "lint-check": "tsc --noEmit && eslint 'src/**/*.{js,ts,tsx}'",
     "lint": "tsc --noEmit && eslint 'src/**/*.{js,ts,tsx}' --fix",
-    "deploy": "cd lambda && npm run build && cd .. && yarn build && serverless deploy"
+    "deploy-lambda": "cd lambda && npm run build && serverless deploy",
+    "predeploy": "yarn build",
+    "deploy": "aws s3 rm s3://invoice-mailer --recursive && cd build && aws s3 cp . s3://invoice-mailer/ --recursive"
   },
   "eslintConfig": {
     "extends": [

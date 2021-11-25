@@ -32,6 +32,8 @@ export const ValidationSchema = Yup.object().shape({
               .catch(() => {
                 resolve(false);
               });
+          } else {
+            resolve(false);
           }
         })
     )

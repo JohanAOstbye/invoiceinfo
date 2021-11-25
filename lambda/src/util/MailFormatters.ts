@@ -49,14 +49,18 @@ export const getFormattedData = (form: FormData, isConfirmMail: boolean) => {
       <p>Navn: ${contactName}</p>
       <p>E-post: ${contactMail}</p>
       <p>Telefon: ${phone} <br><br></p>
-      <p><strong>anledning: ${slugToText(occation)}</strong></p>
-      <p><strong>Ekstra info:</strong></p>
-      ${isponumber ? `<p>Ponummer: ${ponumber} <br><br></p>` : ''}
-      ${isduedate ? `<p>Forfallsdato: ${duedate} <br><br></p>` : ''}
+      <p><strong>Anledning: ${slugToText(occation)}</strong></p>
+      ${
+        isponumber || isduedate
+          ? `<p><strong>Ekstra info:</strong></p>
+        ${isponumber ? `<p>Ponummer: ${ponumber} <br><br></p>` : ''}
+        ${isduedate ? `<p>Dager til forfallsdato ${duedate} <br><br></p>` : ''}`
+          : ''
+      }
       <p>leveringsmetode: ${delivery}<br><br></p>
       ${delivery == 'epost' ? `<p>Epost for levering: ${deliveryAdress} <br><br></p>` : ''}
       ${delivery == 'adresse' ? `<p>Adresse for levering: ${deliveryAdress} <br><br></p>` : ''}
       <p><strong>Kommentarer</strong></p>
-      <p>${comments}</p>
+      <p>${comments ? comments : 'ingen'}</p>
   `;
 };

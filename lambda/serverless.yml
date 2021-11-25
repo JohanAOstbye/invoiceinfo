@@ -1,0 +1,21 @@
+service: invoice-sender
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: prod
+  region: eu-north-1
+
+functions:
+  invoice-sender:
+    handler: dist/lambda/src/handler.handler
+    package:
+      excludeDevDependencies: true
+    events:
+      - http:
+          path: sendMail
+          method: POST
+          cors: true
+
+plugins:
+  - serverless-plugin-optimize

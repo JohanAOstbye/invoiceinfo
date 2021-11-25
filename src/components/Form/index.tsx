@@ -53,7 +53,7 @@ const InterestForm = (): JSX.Element => {
       initialValues={initialValues}
       onSubmit={async (values) => {
         try {
-          const res = await fetch(`https://pgs9depyui.execute-api.eu-north-1.amazonaws.com/prod/sendMail`, {
+          const res = await fetch(`https://3lnowj2e0k.execute-api.eu-north-1.amazonaws.com/prod/sendMail`, {
             method: 'post',
             headers: {
               'Content-Type': 'application/json',
