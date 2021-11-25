@@ -29,8 +29,8 @@ const InvoiceArea: FC<{}> = () => {
       {values.delivery !== 'ehf' && values.delivery !== '' ? (
         <TextField name="deliveryLocation" label={values.delivery} placeholder={`Ønsket ${values.delivery}`} />
       ) : null}
-      <ExtraInfo name="ponumber" label="PO-nummer" />
-      <ExtraInfo name="duedate" label="Foretrukket forfallsdato" />
+      <ExtraInfo name="ponumber" label="PO-nummer" placeholder="PO-nummer" />
+      <ExtraInfo name="duedate" label="spesiell antall dager til forfallsdato" placeholder="antall dager" number />
     </Area>
   );
 };

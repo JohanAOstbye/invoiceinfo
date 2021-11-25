@@ -28,11 +28,11 @@ const S = {
 };
 
 const NumberField: FC<NumberFieldProps> = (props) => {
-  const { name, onBlur, onChange, value, placeholder } = props;
+  const { name, onBlur, onChange, value } = props;
   const [field] = useField<string>({ name, onBlur, onChange, value });
   return (
     <S.Wrapper>
-      <NumberInputControl numberInputProps={{ placeholder }} {...field} {...props} showStepper={false} />
+      <NumberInputControl {...field} {...props} showStepper={false} />
       <br />
     </S.Wrapper>
   );
