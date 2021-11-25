@@ -4,7 +4,6 @@ import { useField } from 'formik';
 import styled from 'styled-components';
 
 interface CheckboxProps {
-  value: string;
   name: string;
   label: string;
 }
