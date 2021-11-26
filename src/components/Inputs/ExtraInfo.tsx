@@ -13,15 +13,14 @@ interface ExtraInfoProps {
 
 const ExtraInfo: FC<ExtraInfoProps> = ({ name, label, placeholder = '', number }) => {
   const { values }: FormikProps<FormikValues> = useFormikContext();
+  const boolname = `is${name}`;
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   useEffect(() => {}, [values[name]]);
 
-  const boolname = `is${name}`;
-
   return (
     <div>
-      <Checkbox label={`Ønsker ${label}`} name={boolname} value={values[boolname]} />
+      <Checkbox label={`Ønsker ${label}`} name={boolname} />
       {values[boolname] ? (
         <>
           <br />

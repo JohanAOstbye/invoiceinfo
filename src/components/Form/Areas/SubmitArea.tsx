@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
-import { SubmitButton, ResetButton } from 'formik-chakra-ui';
+import { SubmitButton } from 'formik-chakra-ui';
 import { useToast } from '@chakra-ui/react';
 import { Stack } from '@dotkomonline/yacl';
 import Area from '../../Area';
@@ -58,7 +58,6 @@ const SubmitArea: FC<SubmitAreaProps> = ({ ...props }) => {
           >
             Send
           </SubmitButton>
-          <ResetButton colorScheme="blue">Nullstill</ResetButton>
         </Stack>
       </S.Wrapper>
     </Area>
