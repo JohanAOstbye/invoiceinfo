@@ -58,7 +58,6 @@ const SubmitArea: FC<SubmitAreaProps> = ({ ...props }) => {
           >
             Send
           </SubmitButton>
-          <ResetButton colorScheme="blue">Nullstill</ResetButton>
         </Stack>
       </S.Wrapper>
     </Area>
